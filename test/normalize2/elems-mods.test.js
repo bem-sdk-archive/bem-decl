@@ -65,3 +65,18 @@ test('should support mods in elems and block', t => {
         { entity: { block: 'block', elem: 'elem', modName: 'm2', modVal: 'v2' }, tech: undefined }
     ]);
 });
+
+test('should support block mods with `elems` field without block', t => {
+    const decl = [
+        {
+            elems: ['close'],
+            mods: { theme: 'protect' }
+        }
+    ];
+
+    t.deepEqual(normalize(decl), [
+        { entity: { block: null }, tech: undefined },
+        { entity: { block: null, modName: 'theme', modVal: 'protect' }, tech: undefined },
+        { entity: { block: null, elem: 'close' }, tech: undefined }
+    ]);
+})
