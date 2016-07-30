@@ -20,6 +20,7 @@ test('should support elem as object and mod', t => {
         { entity: { block: 'block', elem: 'elem', modName: 'mod1', modVal: 'v1' }, tech: undefined }
     ]);
 });
+
 test('should support elem of elem as array mods', t => {
     const decl = {
         block: 'block',
