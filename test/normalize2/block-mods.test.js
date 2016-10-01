@@ -18,6 +18,19 @@ test('sould support mods', t => {
     ]);
 });
 
+test('should support mods as array', t => {
+    const decl = {
+        block: 'block',
+        mods: ['m1', 'm2']
+    };
+
+    t.deepEqual(normalize(decl), [
+        { entity: { block: 'block' }, tech: undefined },
+        { entity: { block: 'block', modName: 'm1', modVal: true }, tech: undefined },
+        { entity: { block: 'block', modName: 'm2', modVal: true }, tech: undefined }
+    ]);
+});
+
 test('should pass mods to elem', t => {
     const decl = {
         block: 'block',
