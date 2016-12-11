@@ -2,10 +2,10 @@
 
 const test = require('ava');
 
-const convert = require('../../lib/convert');
+const format = require('../../lib/format');
 
 test('must return empty decl', t => {
-    t.deepEqual(convert([], { format: 'v1' }), []);
+    t.deepEqual(format([], { format: 'v1' }), []);
 });
 
 test('must group elems of one block', t => {
@@ -19,7 +19,7 @@ test('must group elems of one block', t => {
     ];
 
     t.deepEqual(
-        convert(input, { format: 'v1' }),
+        format(input, { format: 'v1' }),
         output
     );
 });
@@ -41,7 +41,7 @@ test('must group mods of one block', t => {
     ];
 
     t.deepEqual(
-        convert(input, { format: 'v1' }),
+        format(input, { format: 'v1' }),
         output
     );
 });
@@ -62,7 +62,7 @@ test('must group vals of mods block', t => {
     ];
 
     t.deepEqual(
-        convert(input, { format: 'v1' }),
+        format(input, { format: 'v1' }),
         output
     );
 });
@@ -88,7 +88,7 @@ test('must group elem mods of block', t => {
     ];
 
     t.deepEqual(
-        convert(input, { format: 'v1' }),
+        format(input, { format: 'v1' }),
         output
     );
 });
@@ -114,14 +114,14 @@ test('must group vals of elem mods', t => {
     ];
 
     t.deepEqual(
-        convert(input, { format: 'v1' }),
+        format(input, { format: 'v1' }),
         output
     );
 });
 
 test('should create full entity with mods', t => {
     t.deepEqual(
-        convert({ entity: { block: 'block1', modName: 'mod1', modVal: 'val1' } }, { format: 'v1' }),
+        format({ entity: { block: 'block1', modName: 'mod1', modVal: 'val1' } }, { format: 'v1' }),
         [{
             name: 'block1',
             mods: [{

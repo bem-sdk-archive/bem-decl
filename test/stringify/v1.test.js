@@ -13,9 +13,7 @@ test('should stringify v1 declaration', t => {
             name: 'elem',
             mods: [{
                 name: 'mod',
-                vals: [{
-                    name: 'val'
-                }]
+                vals: ['val']
             }]
         }]
     }];
