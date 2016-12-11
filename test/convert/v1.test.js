@@ -8,7 +8,7 @@ test('must return empty decl', t => {
     t.deepEqual(convert([], { format: 'v1' }), []);
 });
 
-test('must split elems of one block', t => {
+test('must group elems of one block', t => {
     const input = [
         { entity: { block: 'block1' }, tech: null },
         { entity: { block: 'block1', elem: 'elem1' }, tech: null },
@@ -24,7 +24,7 @@ test('must split elems of one block', t => {
     );
 });
 
-test('must split mods of one block', t => {
+test('must group mods of one block', t => {
     const input = [
         { entity: { block: 'block1' }, tech: null },
         { entity: { block: 'block1', modName: 'mod1', modVal: 'val1' }, tech: null },
@@ -34,8 +34,8 @@ test('must split mods of one block', t => {
         {
             name: 'block1',
             mods: [
-                { name: 'mod1', vals: [{ name: 'val1' }] },
-                { name: 'mod2', vals: [{ name: 'val2' }] }
+                { name: 'mod1', vals: ['val1'] },
+                { name: 'mod2', vals: ['val2'] }
             ]
         }
     ];
@@ -46,7 +46,7 @@ test('must split mods of one block', t => {
     );
 });
 
-test('must split vals of mods block', t => {
+test('must group vals of mods block', t => {
     const input = [
         { entity: { block: 'block1' }, tech: null },
         { entity: { block: 'block1', modName: 'mod1', modVal: true }, tech: null },
@@ -56,7 +56,7 @@ test('must split vals of mods block', t => {
         {
             name: 'block1',
             mods: [
-                { name: 'mod1', vals: [{ name: true }, { name: 'val1' }] }
+                { name: 'mod1', vals: [true, 'val1'] }
             ]
         }
     ];
@@ -67,7 +67,7 @@ test('must split vals of mods block', t => {
     );
 });
 
-test('must split elem mods of block', t => {
+test('must group elem mods of block', t => {
     const input = [
         { entity: { block: 'block1' }, tech: null },
         { entity: { block: 'block1', elem: 'elem1', modName: 'mod1', modVal: 'val1' }, tech: null },
@@ -80,7 +80,7 @@ test('must split elem mods of block', t => {
                 {
                     name: 'elem1',
                     mods: [
-                        { name: 'mod1', vals: [{ name: 'val1' }] }, { name: 'mod2', vals: [{ name: 'val2' }] }
+                        { name: 'mod1', vals: ['val1'] }, { name: 'mod2', vals: ['val2'] }
                     ]
                 }
             ]
@@ -93,7 +93,7 @@ test('must split elem mods of block', t => {
     );
 });
 
-test('must split vals of elem mods', t => {
+test('must group vals of elem mods', t => {
     const input = [
         { entity: { block: 'block1' }, tech: null },
         { entity: { block: 'block1', elem: 'elem1', modName: 'mod1', modVal: 'val1' }, tech: null },
@@ -106,7 +106,7 @@ test('must split vals of elem mods', t => {
                 {
                     name: 'elem1',
                     mods: [
-                        { name: 'mod1', vals: [{ name: 'val1' }, { name: 'val2' }] }
+                        { name: 'mod1', vals: ['val1', 'val2'] }
                     ]
                 }
             ]
@@ -126,9 +126,7 @@ test('should create full entity with mods', t => {
             name: 'block1',
             mods: [{
                 name: 'mod1',
-                vals: [{
-                    name: 'val1'
-                }]
+                vals: ['val1']
             }]
         }]
     );
