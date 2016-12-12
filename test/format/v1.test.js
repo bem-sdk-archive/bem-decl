@@ -131,3 +131,107 @@ test('should create full entity with mods', t => {
         }]
     );
 });
+
+test('should not group different blocks', t => {
+    t.deepEqual(
+        format([
+            { entity: { block: 'block1' } },
+            { entity: { block: 'block2' } },
+            { entity: { block: 'block3' } }
+        ], { format: 'v1' }),
+        [
+            {
+                name: 'block1'
+            },
+            {
+                name: 'block2'
+            },
+            {
+                name: 'block3'
+            }
+        ]
+    );
+});
+
+test('should not group different blocks with equal elems', t => {
+    const input = [
+        { entity: { block: 'block1', elem: 'elem' } },
+        { entity: { block: 'block2', elem: 'elem' } }
+    ];
+    const output = [
+        {
+            name: 'block1',
+            elems: [{
+                name: 'elem'
+            }]
+        },
+        {
+            name: 'block2',
+            elems: [{
+                name: 'elem'
+            }]
+        }
+    ];
+
+    t.deepEqual(
+        format(input, { format: 'v1' }),
+        output
+     );
+});
+
+test('should not group equal vals of different mods', t => {
+    const input = [
+        { entity: { block: 'block1', elem: 'elem', modName: 'mod1', modVal: 'val1' } },
+        { entity: { block: 'block1', elem: 'elem', modName: 'mod2', modVal: 'val1' } }
+    ];
+    const output = [
+        {
+            name: 'block1',
+            elems: [{
+                name: 'elem',
+                mods: [{
+                    name: 'mod1',
+                    vals: ['val1']
+                }, {
+                    name: 'mod2',
+                    vals: ['val1']
+                }]
+            }]
+        }
+    ];
+
+    t.deepEqual(
+        format(input, { format: 'v1' }),
+        output
+     );
+});
+
+test('should not group equal mods of different elems', t => {
+    const input = [
+        { entity: { block: 'block1', elem: 'elem1', modName: 'mod1', modVal: 'val1' } },
+        { entity: { block: 'block1', elem: 'elem2', modName: 'mod1', modVal: 'val1' } }
+    ];
+    const output = [
+        {
+            name: 'block1',
+            elems: [{
+                name: 'elem1',
+                mods: [{
+                    name: 'mod1',
+                    vals: ['val1']
+                }]
+            }, {
+                name: 'elem2',
+                mods: [{
+                    name: 'mod1',
+                    vals: ['val1']
+                }]
+            }]
+        }
+    ];
+
+    t.deepEqual(
+        format(input, { format: 'v1' }),
+        output
+     );
+});
