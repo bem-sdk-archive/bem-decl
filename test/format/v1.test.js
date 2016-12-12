@@ -235,3 +235,86 @@ test('should not group equal mods of different elems', t => {
         output
      );
 });
+
+test('should not break order of different entities', t => {
+    const input = [
+        { entity: { block: 'block1', elem: 'elem1' } },
+        { entity: { block: 'block2' } },
+        { entity: { block: 'block1', elem: 'elem1', modName: 'mod1', modVal: 'val1' } }
+    ];
+    const output = [
+        {
+            name: 'block1',
+            elems: [{
+                name: 'elem1',
+            }]
+        },
+        {
+            name: 'block2'
+        },
+        {
+            name: 'block1',
+            elems: [{
+                name: 'elem1',
+                mods: [{
+                    name: 'mod1',
+                    vals: ['val1']
+                }]
+            }]
+        }
+    ];
+
+    t.deepEqual(
+        format(input, { format: 'v1' }),
+        output
+     );
+});
+
+test('should not break order of different entities with complex entities', t => {
+    const input = [
+        { entity: { block: 'block1', elem: 'elem1' } },
+        { entity: { block: 'block2' } },
+        { entity: { block: 'block1', elem: 'elem1', modName: 'mod1', modVal: 'val1' } },
+        { entity: { block: 'block2', modName: 'mod2', modVal: 'val2' } },
+        { entity: { block: 'block2', elem: 'elem2' } }
+    ];
+    const output = [
+        {
+            name: 'block1',
+            elems: [{
+                name: 'elem1',
+            }]
+        },
+        {
+            name: 'block2'
+        },
+        {
+            name: 'block1',
+            elems: [{
+                name: 'elem1',
+                mods: [{
+                    name: 'mod1',
+                    vals: ['val1']
+                }]
+            }]
+        },
+        {
+            name: 'block2',
+            mods: [{
+                name: 'mod2',
+                vals: ['val2']
+            }],
+            elems: [{
+                name: 'elem2'
+            }]
+        }
+    ];
+
+    console.log('input', JSON.stringify(format(input, { format: 'v1' }), null, 4));
+    console.log('output', JSON.stringify(output, null, 4));
+
+    t.deepEqual(
+        format(input, { format: 'v1' }),
+        output
+     );
+});
