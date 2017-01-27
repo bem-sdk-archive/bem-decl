@@ -49,3 +49,10 @@ test('should stringify enb declaration with JSON5', t => {
     );
 });
 
+test('should stringify enb declaration with JSON5 if no exportType given', t => {
+    t.deepEqual(
+        stringify(cell, { format: 'enb' }),
+        JSON5.stringify(obj, null, 4)
+    );
+});
+
