@@ -35,6 +35,13 @@ test('should stringify enb declaration with es6', t => {
     );
 });
 
+test('should stringify enb declaration with es2105', t => {
+    t.deepEqual(
+        stringify(cell, { format: 'enb', exportType: 'es2015' }),
+        `export default ${JSON.stringify(obj, null, 4)};\n`
+    );
+});
+
 test('should stringify enb declaration with JSON', t => {
     t.deepEqual(
         stringify(cell, { format: 'enb', exportType: 'json' }),
