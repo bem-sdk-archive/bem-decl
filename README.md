@@ -16,9 +16,9 @@ Library with a couple of methods to work with sets of BEM entities (aka BEMDECL 
 [david]:        https://david-dm.org/bem-sdk/bem-decl
 [david-img]:    https://img.shields.io/david/bem-sdk/bem-decl.svg
 
-## Prerequisites
+## Requirements
 
-* [Node.js](https://nodejs.org/en/) 4.x+
+* [Node.js 4+](https://nodejs.org/en/)
 
 ## Installation
 
@@ -323,8 +323,4 @@ You may also get it with `git log --pretty=format:"%an <%ae>" | sort -u`.
 
 ## License
 
-Code and documentation are licensed under the Mozilla Public License 2.0 - see the [LICENSE.md](LICENSE.md) file for details.
-
-<!--
-## Acknowledgments
--->
+Code and documentation copyright 2017 YANDEX LLC. Code released under the [Mozilla Public License 2.0](LICENSE.md).
