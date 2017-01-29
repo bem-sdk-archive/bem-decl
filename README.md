@@ -223,7 +223,7 @@ Calculates the set of BEM entities that occur only in the first passed set and d
 
 #### Syntax
 
-`subtract(BemCell[], BemCell[]): BemCell[]`
+`subtract(BemCell[], BemCell[])`
 
 #### Output data
 
@@ -302,7 +302,7 @@ const decl = [
 
 bemDecl.stringify(decl, { format: 'enb' });
 
-/* 'exports.deps = [\n {\n "block": "button"\n }\n];\n'
+// 'exports.deps = [\n {\n "block": "button"\n }\n];\n'
 ```
 
 ## Contributing
@@ -317,7 +317,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 * **Andrew Abramov** - *Initial work* - [blond](https://github.com/blond)
 
-See also the full list of [contributors](https://github.com/bem-sdk/bem-decl/contributors) who participated in this project.
+> See also the full list of [contributors](https://github.com/bem-sdk/bem-decl/contributors) who participated in this project.
 
 You may also get it with `git log --pretty=format:"%an <%ae>" | sort -u`.
 
