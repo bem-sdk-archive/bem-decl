@@ -118,7 +118,7 @@ Loads BEM entities from a file in any format.
 
 | Parameter | Type | Description |
 |----------|-----|----------|
-|**filename**|`string`|`bemdecl.js`-filename.|
+|**filename**|`string`|`bemdecl.js`-filename. Example: `example.bemdecl.js`|
 |**options**|`*`|???|
 
 #### Output data
