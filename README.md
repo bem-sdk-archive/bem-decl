@@ -91,9 +91,9 @@ async function() {
 
 There are several formats and `bem-decl` is here to rule them all.
 
-* 'v1' - the old [BEMDECL](https://en.bem.info/methodology/declarations/) format also known as `exports.blocks = ...`.
-* 'v2' - format based on [`deps.js`](https://en.bem.info/platform/deps/)-files also known as `exports.deps = ...`.
-* 'enb' - legacy format for widely used enb deps reader.
+* **'v1'** — the old [BEMDECL](https://en.bem.info/methodology/declarations/) format, also known as `exports.blocks = [ /* ... */ ]`.
+* **'v2'** — format based on [`deps.js`](https://en.bem.info/platform/deps/)-files, also known as `exports.deps = [ /* ... */ ]`.
+* **'enb'** — legacy format for widely used enb deps reader.
 
 ## API
 
