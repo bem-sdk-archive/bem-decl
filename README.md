@@ -323,4 +323,4 @@ You may also get it with `git log --pretty=format:"%an <%ae>" | sort -u`.
 
 ## License
 
-Code and documentation copyright 2017 YANDEX LLC. Code released under the [Mozilla Public License 2.0](LICENSE.md).
+Code and documentation copyright © 2012 — 2017 YANDEX LLC. Code released under the [Mozilla Public License 2.0](LICENSE.md).
