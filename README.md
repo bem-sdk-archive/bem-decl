@@ -36,55 +36,46 @@ const bemDecl = require('bem-decl');
 
 // Since we using sets stored in files we need to load them asynchronously
 async function() {
-    /*
-       Await loading of file and put it to `set1` variable
-       Note: There are few formats of declaration files but bem-decl here to read them all
-    */
+    // Await loading of file and put it to `set1` variable
+    // Note: There are few formats of declaration files but bem-decl here to read them all
     const set1 = await bemDecl.load('set1.bemdecl.js');
-    /*
-       File set1.bemdecl.js:
-       exports.blocks = [
-          {name: 'button', elems: [{name: 'control'}, {name: 'icon'}]}
-        ];
-    */
+    // File set1.bemdecl.js:
+    // exports.blocks = [
+    //     {name: 'button', elems: [{name: 'control'}, {name: 'icon'}]}
+    // ];
 
-    /*
-       `set1` is an array of BemCell objects,
-       convert them to strings using `.map` and special `id` property:
-    */
+    // `set1` is an array of BemCell objects,
+    // convert them to strings using `.map` and special `id` property:
     set1.map(c => c.id);
-    // ['button', 'button__control', 'button__icon']
+    // [ 'button', 'button__control', 'button__icon' ]
 
     // Let's load another set:
     const set2 = await bemDecl.load('set2.bemdecl.js');
-    /* File set2.bemdecl.js:
-       exports.deps = [
-         {block: 'button', elem: 'icon'},
-         {block: 'link', mods: {theme: 'normal'}}
-       ];
-    */
+    // File set2.bemdecl.js:
+    // exports.deps = [
+    //     {block: 'button', elem: 'icon'},
+    //     {block: 'link', mods: {theme: 'normal'}}
+    // ];
 
     set2.map(c => c.id);
-    // ['button__icon', 'link', 'link_theme', 'link_theme_normal']
+    // [ 'button__icon', 'link', 'link_theme', 'link_theme_normal' ]
 
     // To subtract one set from another just use `.subtract` method:
     bemDecl.subtract(set1, set2).map(c => c.id);
-    // ['button', 'button__control']
+    // [ 'button', 'button__control' ]
 
     // Result will be different if we swap arguments (as expected):
     bemDecl.subtract(set2, set1).map(c => c.id);
-    // ['link', 'link_theme', 'link_theme_normal']
+    // [ 'link', 'link_theme', 'link_theme_normal' ]
 
     // To merge two sets use `.merge` method:
     bemDecl.merge(set1, set2).map(c => c.id);
-    /*
-       ['button', 'button__control', 'button__icon',
-       'link', 'link_theme', 'link_theme_normal']
-    */
+    // [ 'button', 'button__control', 'button__icon',
+    //   'link', 'link_theme', 'link_theme_normal' ]
 
     // Also there is `.intersect` method to calculate intersection between them:
     bemDecl.intersect(set1, set2).map(c => c.id);
-    // ['button__icon']
+    // [ 'button__icon' ]
 }
 ```
 
@@ -96,7 +87,7 @@ There are several formats:
 * **'v2'** — the format based on [`deps.js`](https://en.bem.info/platform/deps/)-files, also known as `exports.deps = [ /* ... */ ]`.
 * **'enb'** — the legacy format for widely used enb deps reader.
 
->  **Note** `bem-decl` controls all of them.
+> **Note** `bem-decl` controls all of them.
 
 ## API
 
@@ -126,7 +117,7 @@ Loads BEM-entities from a file in any format.
 
 #### Output data
 
-A promise that represents **BemCell**.
+A promise that represents `BemCell[]`.
 
 #### Example
 
@@ -158,17 +149,17 @@ Merges many sets of BEM-entities into one.
 
 #### Syntax
 
-`merge(BemCell1, BemCell2, ...)`
+`merge(set1, set2, ...)`
 
 #### Input parameters
 
 | Parameter | Type | Description |
 |----------|-----|----------|
-|**BemCell1, BemCell2, ...**|`Object[]`|Representation of BEM-entity. [Read more](https://github.com/bem-sdk/bem-cell).|
+|**set1, set2, ...**|`BemCell[]`|Sets of BEM-entities. [Read more](https://github.com/bem-sdk/bem-cell).|
 
 #### Output data
 
-A new **BemCell** instance.
+A new set of BEM-entities (`BemCell[]`).
 
 #### Example
 
@@ -197,17 +188,17 @@ Calculates the set of BEM-entities that exists in each passed set.
 
 #### Syntax
 
-`intersect(BemCell1, BemCell2, ...)`
+`intersect(set1, set2, ...)`
 
 #### Input parameters
 
 | Parameter | Type | Description |
 |----------|-----|----------|
-|**BemCell1, BemCell2, ...**|`Object[]`|Representation of BEM-entity. [Read more](https://github.com/bem-sdk/bem-cell).|
+|**set1, set2, ...**|`BemCell[]`|Sets of BEM-entities. [Read more](https://github.com/bem-sdk/bem-cell).|
 
 #### Output data
 
-**BemCell**.
+A new set of BEM-entities (`BemCell[]`).
 
 #### Example
 
@@ -238,17 +229,17 @@ Calculates the set of BEM-entities that occur only in the first passed set and d
 
 #### Syntax
 
-`subtract(BemCell1, BemCell2)`
+`subtract(set1, set2, ...)`
 
 #### Input parameters
 
 | Parameter | Type | Description |
 |----------|-----|----------|
-|**BemCell1, BemCell2, ...**|`Object[]`|Representation of BEM-entity. [Read more](https://github.com/bem-sdk/bem-cell).|
+|**set1, set2, ...**|`BemCell[]`|Sets of BEM-entities. **set1** is the main set. [Read more](https://github.com/bem-sdk/bem-cell).|
 
 #### Output data
 
-A new **BemCell** instance.
+A new set of BEM-entities (`BemCell[]`).
 
 #### Example
 
@@ -288,7 +279,7 @@ Parses raw string or evaluated JS object to a set of BEM-entities.
 
 #### Output data
 
-**BemCell**.
+Set of BEM-entities (`BemCell[]`).
 
 #### Example
 
@@ -308,14 +299,15 @@ Stringifies set of BEM-entities to a specific format.
 
 #### Syntax
 
-`stringify(BemCell, {format: 'enb'})`
+`stringify(set, options)`
 
 #### Input parameters
 
 | Parameter | Type | Description |
 |----------|-----|----------|
-|**BemCell**|`Object[]`|Representation of BEM-entity. [Read more](https://github.com/bem-sdk/bem-cell).|
-|**{format: 'enb'}**|`Object`|Format of the output.|
+|**set**|`BemCell[]`|Representation of BEM-entity. [Read more](https://github.com/bem-sdk/bem-cell).|
+|**options**|`Object`|Example: `{format: 'enb'}`|
+|**options.format**|`String`|Format of the output. Example: `'enb'`|
 
 #### Output data
 
