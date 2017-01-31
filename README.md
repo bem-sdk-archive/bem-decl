@@ -1,6 +1,6 @@
 # bem-decl
 
-Library with a couple of methods to work with sets of BEM entities (aka BEMDECL files).
+The library contains a number of methods to work with sets of [BEM-entities](https://en.bem.info/methodology/key-concepts/#bem-entity), aka BEMDECL files.
 
 [![NPM Status][npm-img]][npm]
 [![Travis Status][test-img]][travis]
@@ -22,11 +22,12 @@ Library with a couple of methods to work with sets of BEM entities (aka BEMDECL 
 
 ## Installation
 
-Run in your project directory:
+This library is distributed on `npm`. In order to add it as a dependency, run the following command in your project directory:
 
 ```bash
 npm install --save bem-decl
 ```
+> **Note** Node comes with npm installed so you should have a version of npm.
 
 ## Usage
 
@@ -77,8 +78,8 @@ async function() {
     // To merge two sets use `.merge` method:
     bemDecl.merge(set1, set2).map(c => c.id);
     /*
-     ['button', 'button__control', 'button__icon',
-      'link', 'link_theme', 'link_theme_normal']
+       ['button', 'button__control', 'button__icon',
+       'link', 'link_theme', 'link_theme_normal']
     */
 
     // Also there is `.intersect` method to calculate intersection between them:
@@ -89,11 +90,13 @@ async function() {
 
 ## BEMDECL formats
 
-There are several formats and `bem-decl` is here to rule them all.
+There are several formats:
 
 * **'v1'** — the old [BEMDECL](https://en.bem.info/methodology/declarations/) format, also known as `exports.blocks = [ /* ... */ ]`.
-* **'v2'** — format based on [`deps.js`](https://en.bem.info/platform/deps/)-files, also known as `exports.deps = [ /* ... */ ]`.
-* **'enb'** — legacy format for widely used enb deps reader.
+* **'v2'** — the format based on [`deps.js`](https://en.bem.info/platform/deps/)-files, also known as `exports.deps = [ /* ... */ ]`.
+* **'enb'** — the legacy format for widely used enb deps reader.
+
+>  **Note** `bem-decl` controls all of them.
 
 ## API
 
@@ -108,22 +111,22 @@ There are several formats and `bem-decl` is here to rule them all.
 
 ### load method
 
-Loads BEM entities from a file in any format.
+Loads BEM-entities from a file in any format.
 
 #### Syntax
 
-`load(filename[, options])`
+`load(file[, options])`
 
 #### Input parameters
 
 | Parameter | Type | Description |
 |----------|-----|----------|
-|**filename**|`string`|`bemdecl.js`-filename. Example: `example.bemdecl.js`|
-|**options**|`*`|???|
+|**file**|`string`|`bemdecl.js`-filename or path to the file. </br>Examples: </br> &#149; `example.bemdecl.js`; </br> &#149; `./desktop.bundles/example/example.bemdecl.js`.|
+|**options**|`*`| &#149; encoding `String`, `Null` (default = `null`); </br> &#149; flag `String` (default = `'r'`). </br> [Read more](https://nodejs.org/api/fs.html#fs_fs_readfile_file_options_callback).|
 
 #### Output data
 
-A promise that represents `BemCell[]`.
+A promise that represents **BemCell**.
 
 #### Example
 
@@ -137,7 +140,7 @@ bemDecl.load('set1.bemdecl.js')
 <!--
 ### `save(file: String, decl: BemCell[], opts: *): Promise<?>`
 
-Formats and saves a file with BEM entities from a file in any format
+Formats and saves a file with BEM-entities from a file in any format
 
 ```js
 const decl = [
@@ -151,15 +154,21 @@ TODO: https://github.com/bem-sdk/bem-decl/issues/4
 
 ### merge method
 
-Merges many sets of BEM entities into one.
+Merges many sets of BEM-entities into one.
 
 #### Syntax
 
-`merge(BemCell[], BemCell[], ...)`
+`merge(BemCell1, BemCell2, ...)`
+
+#### Input parameters
+
+| Parameter | Type | Description |
+|----------|-----|----------|
+|**BemCell1, BemCell2, ...**|`Object[]`|Representation of BEM-entity. [Read more](https://github.com/bem-sdk/bem-cell).|
 
 #### Output data
 
-`BemCell[]`
+A new **BemCell** instance.
 
 #### Example
 
@@ -184,15 +193,21 @@ bemDecl.merge(decl1, decl2, decl3).map(c => c.id);
 
 ### intersect method
 
-Calculates the set of BEM entities that exists in each passed set.
+Calculates the set of BEM-entities that exists in each passed set.
 
 #### Syntax
 
-`intersect(BemCell[], BemCell[], ...)`
+`intersect(BemCell1, BemCell2, ...)`
+
+#### Input parameters
+
+| Parameter | Type | Description |
+|----------|-----|----------|
+|**BemCell1, BemCell2, ...**|`Object[]`|Representation of BEM-entity. [Read more](https://github.com/bem-sdk/bem-cell).|
 
 #### Output data
 
-`BemCell[]`
+**BemCell**.
 
 #### Example
 
@@ -219,15 +234,21 @@ bemDecl.intersect(decl1, decl2, decl3).map(c => c.id);
 
 ### subtract method
 
-Calculates the set of BEM entities that occur only in the first passed set and does not exist in the rest.
+Calculates the set of BEM-entities that occur only in the first passed set and does not exist in the rest.
 
 #### Syntax
 
-`subtract(BemCell[], BemCell[])`
+`subtract(BemCell1, BemCell2)`
+
+#### Input parameters
+
+| Parameter | Type | Description |
+|----------|-----|----------|
+|**BemCell1, BemCell2, ...**|`Object[]`|Representation of BEM-entity. [Read more](https://github.com/bem-sdk/bem-cell).|
 
 #### Output data
 
-`BemCell[]`
+A new **BemCell** instance.
 
 #### Example
 
@@ -253,7 +274,7 @@ bemDecl.subtract(decl1, decl2, decl3).map(c => c.id);
 
 ### parse method
 
-Parses raw string or evaluated JS object to a set of BEM entities.
+Parses raw string or evaluated JS object to a set of BEM-entities.
 
 #### Syntax
 
@@ -263,11 +284,11 @@ Parses raw string or evaluated JS object to a set of BEM entities.
 
 | Parameter | Type | Description |
 |----------|-----|----------|
-|**bemdecl**|`string|Object`|???|
+|**bemdecl**| `string` &#124; `Object` |Declaration of BEM-entities.|
 
 #### Output data
 
-`BemCell[]`
+**BemCell**.
 
 #### Example
 
@@ -277,21 +298,28 @@ bemDecl.parse('exports.deps = [{ block: "button" }]').map(c => c.id);
 // ['button']
 ```
 
-See also [Declarations in BEM](https://en.bem.info/methodology/declarations/)
+See also [Declarations in BEM](https://en.bem.info/methodology/declarations/).
 
 ### stringify method
 
-Stringifies set of BEM entities to a specific format.
+Stringifies set of BEM-entities to a specific format.
 
 **Note** Temporary there is just `enb` format. It will be fixed later.
 
 #### Syntax
 
-`stringify(BemCell[], {format: 'enb'})`
+`stringify(BemCell, {format: 'enb'})`
+
+#### Input parameters
+
+| Parameter | Type | Description |
+|----------|-----|----------|
+|**BemCell**|`Object[]`|Representation of BEM-entity. [Read more](https://github.com/bem-sdk/bem-cell).|
+|**{format: 'enb'}**|`Object`|Format of the output.|
 
 #### Output data
 
-`String`
+`String`.
 
 #### Example
 
@@ -315,7 +343,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Andrew Abramov** - *Initial work* - [blond](https://github.com/blond)
+* **Andrew Abramov** (*Initial work* — [blond](https://github.com/blond)).
 
 > See also the full list of [contributors](https://github.com/bem-sdk/bem-decl/contributors) who participated in this project.
 
@@ -323,4 +351,4 @@ You may also get it with `git log --pretty=format:"%an <%ae>" | sort -u`.
 
 ## License
 
-Code and documentation copyright © 2012 — 2017 YANDEX LLC. Code released under the [Mozilla Public License 2.0](LICENSE.md).
+Code and documentation copyright © 2014 YANDEX LLC. Code released under the [Mozilla Public License 2.0](LICENSE.txt).
