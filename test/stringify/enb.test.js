@@ -15,8 +15,7 @@ const cell = new BemCell({
 });
 
 test('should throws error if no format given', t => {
-    t.throws(() => stringify(
-        new BemCell({ entity: new BemEntityName({ block: 'block' }), tech: null })),
+    t.throws(() => stringify(cell),
         'You must declare target format'
     );
 });
@@ -62,4 +61,3 @@ test('should stringify enb declaration with JSON5 if no exportType given', t => 
         JSON5.stringify(obj, null, 4)
     );
 });
-

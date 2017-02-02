@@ -308,6 +308,7 @@ Stringifies set of BEM-entities to a specific format.
 |**set**|`BemCell[]`|Representation of BEM-entity.|
 |**options**|`Object`|Example: `{format: 'enb'}`|
 |**options.format**|`String`|Format of the output. Example: `'enb'`|
+|**options.exportType**|`String`|Type of output wrapper. Example: `'json5'`|
 
 #### Output data
 
@@ -320,10 +321,21 @@ const decl = [
     new BemCell({ entity: new BemEntityName({ block: 'button' }) })
 ];
 
-bemDecl.stringify(decl, { format: 'enb' });
+bemDecl.stringify(decl, { format: 'enb', exportType: 'cjs' });
 
-// → 'exports.deps = [\n {\n "block": "button"\n }\n];\n'
+/* output → 
+module.exports = {
+    "format": "enb",
+    "decl": [
+        {
+            "block": "block"
+        }
+    ]
+};
+*/
 ```
+
+
 
 ## Contributing
 
