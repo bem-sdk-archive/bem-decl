@@ -11,6 +11,20 @@ test('entity block should dominate scope’s one', t => {
         { entity: { block: 'b' }, tech: null });
 });
 
+test('entity block should correcly assign with block-elem from scope', t => {
+    t.deepEqual(simplifyCell(assign(
+        { entity: { block: 'b' } },
+        { entity: { block: 'b', elem: 'e' } })),
+        { entity: { block: 'b' }, tech: null });
+});
+
+test('entity block should correcly assign with block-mod from scope', t => {
+    t.deepEqual(simplifyCell(assign(
+        { entity: { block: 'b' } },
+        { entity: { block: 'b', modName: 'm', modVal: 'v' } })),
+        { entity: { block: 'b' }, tech: null });
+});
+
 test('entity elem should dominate scope’s one', t => {
     t.deepEqual(simplifyCell(assign(
         { entity: { block: 'b', elem: 'e' } },
