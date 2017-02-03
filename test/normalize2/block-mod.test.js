@@ -12,8 +12,8 @@ test('should support mod', t => {
     }
 
     t.deepEqual(normalize(decl).map(simplifyCell), [
-        { entity: { block: 'block', modName: 'm1', modVal: true }, tech: null },
-        { entity: { block: 'block', modName: 'm1', modVal: 'v1' }, tech: null }
+        { entity: { block: 'block', mod: { name: 'm1', val: true } }, tech: null },
+        { entity: { block: 'block', mod: { name: 'm1', val: 'v1' } }, tech: null }
     ]);
 });
 
@@ -26,7 +26,7 @@ test('should support mod with tech', t => {
     }
 
     t.deepEqual(normalize(decl).map(simplifyCell), [
-        { entity: { block: 'block', modName: 'm1', modVal: true }, tech: 'js' },
-        { entity: { block: 'block', modName: 'm1', modVal: 'v1' }, tech: 'js' }
+        { entity: { block: 'block', mod: { name: 'm1', val: true } }, tech: 'js' },
+        { entity: { block: 'block', mod: { name: 'm1', val: 'v1' } }, tech: 'js' }
     ]);
 });

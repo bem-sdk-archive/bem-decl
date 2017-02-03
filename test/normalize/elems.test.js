@@ -31,7 +31,7 @@ test('should support objects', t => {
     t.deepEqual(normalize(decl).map(simplifyCell), [
         { entity: { block: 'block' }, tech: null },
         { entity: { block: 'block', elem: 'elem' }, tech: null },
-        { entity: { block: 'block', elem: 'elem', modName: 'mod', modVal: 'val' }, tech: null }
+        { entity: { block: 'block', elem: 'elem', mod: { name: 'mod', val: 'val' } }, tech: null }
     ]);
 });
 
@@ -46,6 +46,6 @@ test('should support mod shortcut', t => {
     t.deepEqual(normalize(decl).map(simplifyCell), [
         { entity: { block: 'block' }, tech: null },
         { entity: { block: 'block', elem: 'elem' }, tech: null },
-        { entity: { block: 'block', elem: 'elem', modName: 'mod', modVal: true }, tech: null }
+        { entity: { block: 'block', elem: 'elem', mod: { name: 'mod', val: true } }, tech: null }
     ]);
 });

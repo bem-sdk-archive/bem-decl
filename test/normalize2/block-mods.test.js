@@ -14,8 +14,8 @@ test('sould support mods', t => {
 
     t.deepEqual(normalize(decl).map(simplifyCell), [
         { entity: { block: 'block' }, tech: null },
-        { entity: { block: 'block', modName: 'm1', modVal: true }, tech: null },
-        { entity: { block: 'block', modName: 'm1', modVal: 'v1' }, tech: null }
+        { entity: { block: 'block', mod: { name: 'm1', val: true } }, tech: null },
+        { entity: { block: 'block', mod: { name: 'm1', val: 'v1' } }, tech: null }
     ]);
 });
 
@@ -30,8 +30,8 @@ test('should pass mods to elem', t => {
 
     t.deepEqual(normalize(decl).map(simplifyCell), [
         { entity: { block: 'block', elem: 'elem' }, tech: null },
-        { entity: { block: 'block', elem: 'elem', modName: 'm1', modVal: true }, tech: null },
-        { entity: { block: 'block', elem: 'elem', modName: 'm1', modVal: 'v1' }, tech: null }
+        { entity: { block: 'block', elem: 'elem', mod: { name: 'm1', val: true } }, tech: null },
+        { entity: { block: 'block', elem: 'elem', mod: { name: 'm1', val: 'v1' } }, tech: null }
     ]);
 });
 
@@ -46,10 +46,10 @@ test('should support several mods', t => {
 
     t.deepEqual(normalize(decl).map(simplifyCell), [
         { entity: { block: 'block' }, tech: null },
-        { entity: { block: 'block', modName: 'm1', modVal: true }, tech: null },
-        { entity: { block: 'block', modName: 'm1', modVal: 'v1' }, tech: null },
-        { entity: { block: 'block', modName: 'm2', modVal: true }, tech: null },
-        { entity: { block: 'block', modName: 'm2', modVal: 'v2' }, tech: null }
+        { entity: { block: 'block', mod: { name: 'm1', val: true } }, tech: null },
+        { entity: { block: 'block', mod: { name: 'm1', val: 'v1' } }, tech: null },
+        { entity: { block: 'block', mod: { name: 'm2', val: true } }, tech: null },
+        { entity: { block: 'block', mod: { name: 'm2', val: 'v2' } }, tech: null }
     ]);
 });
 
@@ -63,9 +63,9 @@ test('should support array of mod values in object', t => {
 
     t.deepEqual(normalize(decl).map(simplifyCell), [
         { entity: { block: 'block' }, tech: null },
-        { entity: { block: 'block', modName: 'm1', modVal: true }, tech: null },
-        { entity: { block: 'block', modName: 'm1', modVal: 'v1' }, tech: null },
-        { entity: { block: 'block', modName: 'm1', modVal: 'v2' }, tech: null }
+        { entity: { block: 'block', mod: { name: 'm1', val: true } }, tech: null },
+        { entity: { block: 'block', mod: { name: 'm1', val: 'v1' } }, tech: null },
+        { entity: { block: 'block', mod: { name: 'm1', val: 'v2' } }, tech: null }
     ]);
 });
 
@@ -77,7 +77,7 @@ test('should support array of mod values', t => {
 
     t.deepEqual(normalize(decl).map(simplifyCell), [
         { entity: { block: 'block' }, tech: null },
-        { entity: { block: 'block', modName: 'm1', modVal: true }, tech: null },
-        { entity: { block: 'block', modName: 'm2', modVal: true }, tech: null }
+        { entity: { block: 'block', mod: { name: 'm1', val: true } }, tech: null },
+        { entity: { block: 'block', mod: { name: 'm2', val: true } }, tech: null }
     ]);
 });

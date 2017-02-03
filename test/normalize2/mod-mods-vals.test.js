@@ -13,11 +13,11 @@ test('should support mod and mods with scope block, elem', t => {
     ];
 
     t.deepEqual(normalize(decl, scope).map(simplifyCell), [
-        { entity: { block: 'sb', modName: 'mod', modVal: true }, tech: null },
-        { entity: { block: 'sb', modName: 'mod', modVal: 'val' }, tech: null },
+        { entity: { block: 'sb', mod: { name: 'mod', val: true } }, tech: null },
+        { entity: { block: 'sb', mod: { name: 'mod', val: 'val' } }, tech: null },
         { entity: { block: 'sb' }, tech: null },
-        { entity: { block: 'sb', modName: 'mod1', modVal: true }, tech: null },
-        { entity: { block: 'sb', modName: 'mod1', modVal: 'val1' }, tech: null }
+        { entity: { block: 'sb', mod: { name: 'mod1', val: true } }, tech: null },
+        { entity: { block: 'sb', mod: { name: 'mod1', val: 'val1' } }, tech: null }
     ]);
 });
 
@@ -26,8 +26,8 @@ test('should support mod without block & elem but with scope', t => {
     const decl = { mod: 'mod', val: 'val' };
 
     t.deepEqual(normalize(decl, scope).map(simplifyCell), [
-        { entity: { block: 'sb', modName: 'mod', modVal: true }, tech: null },
-        { entity: { block: 'sb', modName: 'mod', modVal: 'val' }, tech: null }
+        { entity: { block: 'sb', mod: { name: 'mod', val: true } }, tech: null },
+        { entity: { block: 'sb', mod: { name: 'mod', val: 'val' } }, tech: null }
     ]);
 });
 
@@ -37,17 +37,17 @@ test('should support mods without block & elem', t => {
 
     t.deepEqual(normalize(decl, scope).map(simplifyCell), [
         { entity: { block: 'sb' }, tech: null },
-        { entity: { block: 'sb', modName: 'mod', modVal: true }, tech: null },
-        { entity: { block: 'sb', modName: 'mod', modVal: 'val' }, tech: null }
+        { entity: { block: 'sb', mod: { name: 'mod', val: true } }, tech: null },
+        { entity: { block: 'sb', mod: { name: 'mod', val: 'val' } }, tech: null }
     ]);
 });
 
 test('should support only vals', t => {
-    const scope = createCell({ entity: { block: 'sb', modName: 'sm' } });
+    const scope = createCell({ entity: { block: 'sb', mod: { name: 'sm' } } });
     const decl = { val: 'val' };
 
     t.deepEqual(normalize(decl, scope).map(simplifyCell), [
-        { entity: { block: 'sb', modName: 'sm', modVal: true }, tech: null },
-        { entity: { block: 'sb', modName: 'sm', modVal: 'val' }, tech: null }
+        { entity: { block: 'sb', mod: { name: 'sm', val: true } }, tech: null },
+        { entity: { block: 'sb', mod: { name: 'sm', val: 'val' } }, tech: null }
     ]);
 });

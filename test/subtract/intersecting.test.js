@@ -10,13 +10,13 @@ test('should subtract block from block', t => {
 });
 
 test('should subtract bool mod from bool mod', t => {
-    const mod = [{ block: 'block', modName: 'mod', modVal: true }];
+    const mod = [{ block: 'block', mod: { name: 'mod', val: true } }];
 
     t.deepEqual(subtract(mod, mod), []);
 });
 
 test('should subtract mod from mod', t => {
-    const mod = [{ block: 'block', modName: 'mod', modVal: 'val' }];
+    const mod = [{ block: 'block', mod: { name: 'mod', val: 'val' } }];
 
     t.deepEqual(subtract(mod, mod), []);
 });
@@ -28,13 +28,13 @@ test('should subtract elem from elem', t => {
 });
 
 test('should subtract bool mod of elem from bool mod of elem', t => {
-    const mod = [{ block: 'block', elem: 'elem' , modName: 'mod', modVal: true }];
+    const mod = [{ block: 'block', elem: 'elem' , mod: { name: 'mod', val: true } }];
 
     t.deepEqual(subtract(mod, mod), []);
 });
 
 test('should subtract elem mod from elem mod', t => {
-    const mod = [{ block: 'block', elem: 'elem' , modName: 'mod', modVal: 'val' }];
+    const mod = [{ block: 'block', elem: 'elem' , mod: { name: 'mod', val: 'val' } }];
 
     t.deepEqual(subtract(mod, mod), []);
 });

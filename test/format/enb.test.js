@@ -28,7 +28,7 @@ test('should coformatnvert with elem', t => {
 test('should format with mod', t => {
     t.deepEqual(
         format([
-            { entity: { block: 'block', modName: 'mod', modVal: 'val' }, tech: null }
+            { entity: { block: 'block', mod: { name: 'mod', val: 'val' } }, tech: null }
         ], { format: 'enb' }),
         [{ block: 'block', mod: 'mod', val: 'val' }]
     )
