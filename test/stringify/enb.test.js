@@ -10,7 +10,7 @@ test('should stringify enb declaration', t => {
     const obj = [{ block: 'block', elem: 'elem', mod: 'mod', val: 'val' }];
     t.deepEqual(
         stringify(
-            { entity: { block: 'block', elem: 'elem', modName: 'mod', modVal: 'val' }, tech: null },
+            { entity: { block: 'block', elem: 'elem', mod: { name: 'mod', val: 'val' } }, tech: null },
             { format: 'enb' }
         ),
         'exports.deps = ' + JSON.stringify(obj, null, 4) + ';\n'

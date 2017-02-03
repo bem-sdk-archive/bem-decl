@@ -15,7 +15,7 @@ test('should support mix', t => {
         { entity: { block: 'block' }, tech: null },
         { entity: { block: 'block', elem: 'elem-1' }, tech: null },
         { entity: { block: 'block', elem: 'elem-2' }, tech: null },
-        { entity: { block: 'block', modName: 'mod-1', modVal: true }, tech: null },
-        { entity: { block: 'block', modName: 'mod-2', modVal: true }, tech: null }
+        { entity: { block: 'block', mod: { name: 'mod-1', val: true } }, tech: null },
+        { entity: { block: 'block', mod: { name: 'mod-2', val: true } }, tech: null }
     ]);
 });

@@ -38,6 +38,6 @@ test('should support mods for elem objects', t => {
     t.deepEqual(normalize(decl).map(simplifyCell), [
         { entity: { block: 'block' }, tech: null },
         { entity: { block: 'block', elem: 'elem' }, tech: null },
-        { entity: { block: 'block', elem: 'elem', modName: 'mod', modVal: 'val' }, tech: null }
+        { entity: { block: 'block', elem: 'elem', mod: { name: 'mod', val: 'val' } }, tech: null }
     ]);
 });

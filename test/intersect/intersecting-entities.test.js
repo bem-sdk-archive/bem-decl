@@ -11,13 +11,13 @@ test('should intersect block with block', t => {
 });
 
 test('should intersect bool mod with bool mod', t => {
-    const mod = [{ entity: { block: 'block', modName: 'mod', modVal: true }, tech: null }].map(createCell);
+    const mod = [{ entity: { block: 'block', mod: { name: 'mod', val: true } }, tech: null }].map(createCell);
 
     t.deepEqual(intersect(mod, mod), mod);
 });
 
 test('should intersect mod with mod', t => {
-    const mod = [{ entity: { block: 'block', modName: 'mod', modVal: 'val' }, tech: null }].map(createCell);
+    const mod = [{ entity: { block: 'block', mod: { name: 'mod', val: 'val' } }, tech: null }].map(createCell);
 
     t.deepEqual(intersect(mod, mod), mod);
 });
@@ -30,7 +30,7 @@ test('should intersect elem with elem', t => {
 
 test('should intersect bool mod of elem with bool mod of elem', t => {
     const mod = [
-            { entity: { block: 'block', elem: 'elem' , modName: 'mod', modVal: true }, tech: null }
+            { entity: { block: 'block', elem: 'elem' , mod: { name: 'mod', val: true } }, tech: null }
         ].map(createCell);
 
     t.deepEqual(intersect(mod, mod), mod);
@@ -38,7 +38,7 @@ test('should intersect bool mod of elem with bool mod of elem', t => {
 
 test('should intersect elem mod with elem mod', t => {
     const mod = [
-            { entity: { block: 'block', elem: 'elem' , modName: 'mod', modVal: 'val' }, tech: null }
+            { entity: { block: 'block', elem: 'elem' , mod: { name: 'mod', val: 'val' } }, tech: null }
         ].map(createCell);
 
     t.deepEqual(intersect(mod, mod), mod);

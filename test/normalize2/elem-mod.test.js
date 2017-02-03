@@ -9,7 +9,7 @@ test('should support shortcut for bool mod of elem', t => {
 
     t.deepEqual(normalize(decl).map(simplifyCell), [
         { entity: { block: 'block', elem: 'elem' }, tech: null },
-        { entity: { block: 'block', elem: 'elem', modName: 'mod', modVal: true }, tech: null }
+        { entity: { block: 'block', elem: 'elem', mod: { name: 'mod', val: true } }, tech: null }
     ]);
 });
 
@@ -18,7 +18,7 @@ test('should support bool mod of elem', t => {
 
     t.deepEqual(normalize(decl).map(simplifyCell), [
         { entity: { block: 'block', elem: 'elem' }, tech: null },
-        { entity: { block: 'block', elem: 'elem', modName: 'mod', modVal: true }, tech: null }
+        { entity: { block: 'block', elem: 'elem', mod: { name: 'mod', val: true } }, tech: null }
     ]);
 });
 
@@ -32,11 +32,11 @@ test('should support elem array mod', t => {
 
     t.deepEqual(normalize(decl).map(simplifyCell), [
         { entity: { block: 'block', elem: 'elem1' }, tech: null },
-        { entity: { block: 'block', elem: 'elem1', modName: 'm1', modVal: true }, tech: null },
-        { entity: { block: 'block', elem: 'elem1', modName: 'm1', modVal: 'v1' }, tech: null },
+        { entity: { block: 'block', elem: 'elem1', mod: { name: 'm1', val: true } }, tech: null },
+        { entity: { block: 'block', elem: 'elem1', mod: { name: 'm1', val: 'v1' } }, tech: null },
         { entity: { block: 'block', elem: 'elem2' }, tech: null },
-        { entity: { block: 'block', elem: 'elem2', modName: 'm1', modVal: true }, tech: null },
-        { entity: { block: 'block', elem: 'elem2', modName: 'm1', modVal: 'v1' }, tech: null }
+        { entity: { block: 'block', elem: 'elem2', mod: { name: 'm1', val: true } }, tech: null },
+        { entity: { block: 'block', elem: 'elem2', mod: { name: 'm1', val: 'v1' } }, tech: null }
     ]);
 });
 
@@ -52,10 +52,10 @@ test('should support elem of elem as array with mod', t => {
 
     t.deepEqual(normalize(decl).map(simplifyCell), [
         { entity: { block: 'block', elem: 'elem1' }, tech: null },
-        { entity: { block: 'block', elem: 'elem1', modName: 'm1', modVal: true }, tech: null },
-        { entity: { block: 'block', elem: 'elem1', modName: 'm1', modVal: 'v1' }, tech: null },
+        { entity: { block: 'block', elem: 'elem1', mod: { name: 'm1', val: true } }, tech: null },
+        { entity: { block: 'block', elem: 'elem1', mod: { name: 'm1', val: 'v1' } }, tech: null },
         { entity: { block: 'block', elem: 'elem2' }, tech: null },
-        { entity: { block: 'block', elem: 'elem2', modName: 'm1', modVal: true }, tech: null },
-        { entity: { block: 'block', elem: 'elem2', modName: 'm1', modVal: 'v1' }, tech: null }
+        { entity: { block: 'block', elem: 'elem2', mod: { name: 'm1', val: true } }, tech: null },
+        { entity: { block: 'block', elem: 'elem2', mod: { name: 'm1', val: 'v1' } }, tech: null }
     ]);
 });

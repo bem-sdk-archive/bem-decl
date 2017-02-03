@@ -9,7 +9,7 @@ test('should support shortcut for bool mod of elem', t => {
 
     t.deepEqual(normalize(decl).map(simplifyCell), [
         { entity: { block: 'block' }, tech: null },
-        { entity: { block: 'block', modName: 'mod', modVal: true }, tech: null },
+        { entity: { block: 'block', mod: { name: 'mod', val: true } }, tech: null },
         { entity: { block: 'block', elem: 'elem' }, tech: null }
     ]);
 });
@@ -18,7 +18,7 @@ test('should support bool mod of elems', t => {
 
     t.deepEqual(normalize(decl).map(simplifyCell), [
         { entity: { block: 'block' }, tech: null },
-        { entity: { block: 'block', modName: 'mod', modVal: true }, tech: null },
+        { entity: { block: 'block', mod: { name: 'mod', val: true } }, tech: null },
         { entity: { block: 'block', elem: 'elem' }, tech: null }
     ]);
 });
