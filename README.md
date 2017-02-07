@@ -321,7 +321,7 @@ const decl = [
     new BemCell({ entity: new BemEntityName({ block: 'button' }) })
 ];
 
-bemDecl.stringify(decl, { format: 'enb', exportType: 'cjs' });
+bemDecl.stringify(decl, { format: 'enb', exportType: 'commonjs' });
 
 /* output → 
 module.exports = {

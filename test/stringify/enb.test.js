@@ -22,7 +22,7 @@ test('should throws error if no format given', t => {
 
 test('should stringify enb declaration with commonJS', t => {
     t.deepEqual(
-        stringify(cell, { format: 'enb', exportType: 'cjs' }),
+        stringify(cell, { format: 'enb', exportType: 'commonjs' }),
         `module.exports = ${JSON.stringify(obj, null, 4)};\n`
     );
 });
