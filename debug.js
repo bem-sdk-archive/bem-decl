@@ -1,4 +1,4 @@
-const aet = require('./lib/format/aet');
+const v1 = require('./lib/format/v1');
 const JSON5 = require('json5');
 const BemCell = require('@bem/cell');
 
@@ -15,7 +15,4 @@ const input = [
     BemCell.create({ entity: { block: 'block1', elem: 'elem1', modName: 'm2', modVal: 'v2' }, tech: null }),
 ];
 
-const tree = aet(input);
-console.log(pretty(input));
-console.log('===========================');
-console.log(pretty(tree));
+console.log('result: ', v1(input));
