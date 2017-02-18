@@ -309,6 +309,7 @@ Stringifies set of BEM-entities to a specific format.
 |**options**|`Object`|Example: `{format: 'enb'}`|
 |**options.format**|`String`|Format of the output. Example: `'enb'`|
 |**options.exportType**|`String`|Type of output wrapper. Example: `'json5'`|
+|**options.space**|`String|Number`|Number of space characters or string to use as a white space(exactly as in JSON.stringify). Example: `4`|
 
 #### Output data
 
