@@ -6,8 +6,8 @@ const pretty = obj => JSON5.stringify(obj, null, 2);
 
 const input = [
     BemCell.create({ entity: { block: 'block1' }, tech: null }),
-    BemCell.create({ entity: { block: 'block2' }, tech: null }),
-    BemCell.create({ entity: { block: 'block1', elem: 'elem1' }, tech: null }),
+    // BemCell.create({ entity: { block: 'block2' }, tech: null }),
+    // BemCell.create({ entity: { block: 'block1', elem: 'elem1' }, tech: null }),
     BemCell.create({ entity: { block: 'block1', elem: 'elem1', modName: 'm1', modVal: 'v1' }, tech: null }),
 
     BemCell.create({ entity: { block: 'block1', elem: 'elem1', modName: 'm1', modVal: 'v2' }, tech: null }),
@@ -15,4 +15,4 @@ const input = [
     BemCell.create({ entity: { block: 'block1', elem: 'elem1', modName: 'm2', modVal: 'v2' }, tech: null }),
 ];
 
-console.log('result: ', v1(input));
+console.log('result: ', JSON.stringify(v1(input), null, 4));
