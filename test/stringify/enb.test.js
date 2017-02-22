@@ -1,6 +1,5 @@
 const test = require('ava');
 const BemCell = require('@bem/cell');
-const BemEntityName = require('@bem/entity-name');
 const JSON5 = require('json5');
 
 const stringify = require('../../lib/stringify');
@@ -9,10 +8,7 @@ const obj = {
     format: 'enb',
     decl: [{ block: 'block', elem: 'elem', mod: 'mod', val: 'val' }]
 };
-const cell = new BemCell({
-    entity: new BemEntityName({ block: 'block', elem: 'elem', modName: 'mod', modVal: 'val' }),
-    tech: null
-});
+const cell = BemCell.create({ block: 'block', elem: 'elem', modName: 'mod', modVal: 'val' });
 
 test('should throws error if no format given', t => {
     t.throws(() => stringify(cell),
