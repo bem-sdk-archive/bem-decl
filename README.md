@@ -323,20 +323,16 @@ const decl = [
 ];
 
 bemDecl.stringify(decl, { format: 'enb', exportType: 'commonjs' });
-
-/* output → 
-module.exports = {
-    "format": "enb",
-    "decl": [
-        {
-            "block": "block"
-        }
-    ]
-};
-*/
+ 
+// → module.exports = {
+// →     "format": "enb",
+// →     "decl": [
+// →         {
+// →             "block": "block"
+// →         }
+// →     ]
+// → };
 ```
-
-
 
 ## Contributing
 
