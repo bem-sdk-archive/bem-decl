@@ -14,5 +14,7 @@ test('should throws error if unsupported format given', t => {
 });
 
 test('should throws error if unsupported exportType given', t => {
-    t.throws(() => stringify(cell, { format: 'enb', exportType: 'unsupported' }), 'Specified export type isn\'t supported');
+    t.throws(
+        () => stringify(cell, { format: 'enb', exportType: 'unsupported' }), 'Specified export type isn\'t supported'
+    );
 });
