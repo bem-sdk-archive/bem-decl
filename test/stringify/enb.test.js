@@ -17,42 +17,42 @@ test('should throws error if no format given', t => {
 });
 
 test('should stringify enb declaration with commonJS', t => {
-    t.deepEqual(
+    t.is(
         stringify(cell, { format: 'enb', exportType: 'commonjs' }),
-        `module.exports = ${JSON.stringify(obj, null, 4)};\n`
+        `module.exports = ${JSON5.stringify(obj, null, 4)};\n`
     );
 });
 
 test('should stringify enb declaration with es6', t => {
-    t.deepEqual(
+    t.is(
         stringify(cell, { format: 'enb', exportType: 'es6' }),
-        `export default ${JSON.stringify(obj, null, 4)};\n`
+        `export default ${JSON5.stringify(obj, null, 4)};\n`
     );
 });
 
 test('should stringify enb declaration with es2105', t => {
-    t.deepEqual(
+    t.is(
         stringify(cell, { format: 'enb', exportType: 'es2015' }),
-        `export default ${JSON.stringify(obj, null, 4)};\n`
+        `export default ${JSON5.stringify(obj, null, 4)};\n`
     );
 });
 
 test('should stringify enb declaration with JSON', t => {
-    t.deepEqual(
+    t.is(
         stringify(cell, { format: 'enb', exportType: 'json' }),
         JSON.stringify(obj, null, 4)
     );
 });
 
 test('should stringify enb declaration with JSON5', t => {
-    t.deepEqual(
+    t.is(
         stringify(cell, { format: 'enb', exportType: 'json5' }),
         JSON5.stringify(obj, null, 4)
     );
 });
 
 test('should stringify enb declaration with JSON5 if no exportType given', t => {
-    t.deepEqual(
+    t.is(
         stringify(cell, { format: 'enb' }),
         JSON5.stringify(obj, null, 4)
     );
