@@ -51,9 +51,9 @@ test('should stringify enb declaration with JSON5', t => {
     );
 });
 
-test('should stringify enb declaration with JSON5 if no exportType given', t => {
+test('should stringify enb declaration with JSON if no exportType given', t => {
     t.is(
         stringify(cell, { format: 'enb' }),
-        JSON5.stringify(obj, null, 4)
+        JSON.stringify(obj, null, 4)
     );
 });
