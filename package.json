@@ -2,6 +2,7 @@
   "name": "bem-decl",
   "version": "0.3.0",
   "description": "Manage declaration of BEM entities",
+
   "keywords": [
     "bem",
     "declaration",
